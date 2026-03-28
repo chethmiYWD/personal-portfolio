@@ -79,7 +79,7 @@ export default function App() {
           <div className="aboutPhoto">
             <div className="photo">
               <img
-                src="/profile.jpg"
+                src="profile.jpg"
                 onError={(e) => { e.currentTarget.src = '/profile-placeholder.svg' }}
                 alt="Profile"
               />
