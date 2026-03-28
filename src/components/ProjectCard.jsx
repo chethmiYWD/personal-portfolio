@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { fadeUp } from '../lib/motion.js'
-import { ExternalLink } from 'lucide-react'
 
 export default function ProjectCard({ project, onOpen }) {
   const clickable = Boolean(project.link)
@@ -9,7 +8,7 @@ export default function ProjectCard({ project, onOpen }) {
     <motion.article
       className={clickable ? 'card projectCard clickable' : 'card projectCard'}
       variants={fadeUp}
-      whileHover={{ y: -3 }}
+      whileHover={clickable ? { y: -4 } : undefined}
       transition={{ duration: 0.18 }}
       role={clickable ? 'button' : undefined}
       tabIndex={clickable ? 0 : undefined}
@@ -22,7 +21,9 @@ export default function ProjectCard({ project, onOpen }) {
     >
       <div className="projectHead">
         <h3 className="h3">{project.name}</h3>
-        {project.period ? <span className="badge">{project.period}</span> : null}
+
+        {/* Period stays one line via CSS */}
+        {project.period ? <span className="badge projectPeriod">{project.period}</span> : null}
       </div>
 
       <p className="p">{project.description}</p>
@@ -35,15 +36,7 @@ export default function ProjectCard({ project, onOpen }) {
         ))}
       </div>
 
-      <div className="projectFoot">
-        {clickable ? (
-          <span className="visit">
-            Visit <ExternalLink size={16} />
-          </span>
-        ) : (
-          <span className="muted">Not deployed</span>
-        )}
-      </div>
+      {/* ✅ removed projectFoot entirely (no Visit / Not deployed text) */}
     </motion.article>
   )
 }

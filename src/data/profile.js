@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Chethmi Dissanayake',
-  headline: 'Undergraduate • QA / Test Automation • Software Development',
+  headline: 'Undergraduate / QA Test Automation / Software Development',
   about:
     'Highly motivated software developer and an undergraduate with a passion to learn and implement new technologies. Have strong leadership and communication skills, and possesses the ability to work effectively as part of a team. Have a solid foundation in analytical thinking and dedicated to continuous learning keeping up with the latest trends and best practices in the industry.',
   location: 'Galle, Sri Lanka',
@@ -16,32 +16,16 @@ export const profile = {
       title: 'BSc (Hons) in Computer Science',
       institute: 'Informatics Institute of Technology (affiliated with University of Westminster, UK)',
       period: 'Sep 2023 — Present',
-      details: [
-        'Computer Systems Fundamentals',
-        'Web Design and Development',
-        'Mathematics for Computing',
-        'Advanced Client Side Development',
-        'English Communication Skills',
-        'Database Systems',
-        'Software Development I',
-        'Object Oriented Programming',
-        'Software Development II',
-        'Information Technology Security',
-        'Trends in Computer Science',
-        'Client-Server Architectures',
-      ],
     },
     {
       title: 'G.C.E. Advanced Level (Physical Science with Information Technology)',
       institute: 'Sanghamitta College, Galle',
       period: 'May 2019 — Dec 2022',
-      details: ['Physics', 'Combined Mathematics', 'Information and Communication Technology'],
     },
     {
       title: 'G.C.E. Ordinary Level',
       institute: 'Sussex College, Galle',
       period: 'Dec 2018',
-      details: ['Received 8 “A” passes and 1 “B” pass'],
     },
   ],
 
@@ -50,6 +34,7 @@ export const profile = {
       role: 'Undergraduate Trainee',
       company: 'IFS R & D INTERNATIONAL (Pvt.) Ltd',
       period: 'Jun 2025 — Jun 2026',
+      logo: 'ifs.png',
       highlights: [
         'Executed manual testing including sanity, functional, and regression testing to validate software quality across Windows and Android platforms.',
         'Developed and maintained automated test scripts using Katalon Studio, including feature files, step definitions, and reusable backend functions.',
@@ -142,37 +127,4 @@ export const profile = {
     ],
     softSkills: ['Leadership', 'Time management', 'Problem solving', 'Decision making', 'Ability to work under pressure', 'Analytical thinking'],
   },
-
-  activities: [
-    'Was the Western band leader at Sussex College Galle',
-    'Member of the Leo Club of IIT',
-    'Volunteered for Stagecraft 2024 as a Logistics Team member',
-    'Volunteered for IndustPro 4.0 as part of the Industry Outreach Team',
-    'Was the president of the school IT club',
-  ],
-
-  certifications: [
-    'Achieved certification on Azure Physical Infrastructure by Microsoft Learn Student Ambassador',
-    'Completed the certification in Java Object Oriented Programming',
-    'Participated in the API and GenAI Tour Sri Lanka 2025',
-    'Achieved Spring Boot 2.0 Essential Training certification',
-    'Participated in Code Rally 5.0 hackathon organized by IEEE club of IIT',
-    'Completed the certification on Java Data Structures',
-    'Participated in the Hult Prize on Campus Qualifier Round',
-  ],
-
-  referees: [
-    {
-      name: 'Mr. Kingsly Perera',
-      title: 'Director Software Engineering at IFS',
-      email: 'kingsly.perera@ifs.com',
-      phone: '+94 72 294 5756',
-    },
-    {
-      name: 'Mr. Suresh Peiris',
-      title: 'Co-Founder Inforwaves and Visiting Lecturer at IIT',
-      email: 'suresh@inforwaves.com',
-      phone: '+94 77 254 0020',
-    },
-  ],
 }

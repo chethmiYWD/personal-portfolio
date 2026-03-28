@@ -9,11 +9,9 @@ export default function Navbar({ onJump }) {
   const items = useMemo(
     () => [
       { id: 'about', label: 'About' },
-      { id: 'education', label: 'Education' },
       { id: 'experience', label: 'Experience' },
+      { id: 'education', label: 'Education' },
       { id: 'projects', label: 'Projects' },
-      { id: 'skills', label: 'Skills' },
-      { id: 'extras', label: 'Extras' },
       { id: 'contact', label: 'Contact' },
     ],
     [],
@@ -32,7 +30,6 @@ export default function Navbar({ onJump }) {
       >
         <button className="brand" onClick={() => onJump('about')} aria-label="Go to top" type="button">
           <span className="brandMark">CD</span>
-          <span className="brandText">Portfolio</span>
         </button>
 
         <div className="navItems" role="navigation" aria-label="Sections">

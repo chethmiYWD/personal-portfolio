@@ -40,83 +40,72 @@ export default function App() {
       <Navbar onJump={jumpTo} />
 
       <main className="main" style={{ paddingTop: NAV_HEIGHT }}>
-        <Section id="about" eyebrow="About" title={profile.name}>
-          <div className="aboutCenter">
-            <div className="aboutCardWide">
-              <p className="lead center">{profile.headline}</p>
-              <p className="p center">{profile.about}</p>
+      <Section id="about" eyebrow="About" title={profile.name}>
+        <div className="aboutCenter">
+          <div className="aboutCardWide">
+            <p className="lead center">{profile.headline}</p>
+            <p className="p center">{profile.about}</p>
 
-              <div className="aboutContacts centered" aria-label="Contact shortcuts">
-                <a className="pill" href={`mailto:${profile.email}`}>
-                  <span className="pillIcon" aria-hidden="true">
-                    <FaEnvelope />
-                  </span>
-                  <span>{profile.email}</span>
-                </a>
-                <a className="pill" href={`tel:${String(profile.phone).replace(/\s+/g, '')}`}>
-                  <span className="pillIcon" aria-hidden="true">
-                    <FaPhoneAlt />
-                  </span>
-                  <span>{profile.phone}</span>
-                </a>
-                <span className="pill" role="text">
-                  <span className="pillIcon" aria-hidden="true">
-                    <FaMapMarkerAlt />
-                  </span>
-                  <span>{profile.location}</span>
-                </span>
-              </div>
+            <div className="aboutContacts centered" aria-label="Contact shortcuts">
+              <a className="pill" href={`mailto:${profile.email}`}>
+                <span className="pillIcon" aria-hidden="true"><FaEnvelope /></span>
+                <span>{profile.email}</span>
+              </a>
 
-              <div className="socialRow centered">
-                <button type="button" className="socialBtn" onClick={() => openInNewTab(profile.links.linkedin)}>
-                  <span className="socialIcon" aria-hidden="true">
-                    <FaLinkedin />
-                  </span>
-                  <span>LinkedIn</span>
-                </button>
-                <button type="button" className="socialBtn" onClick={() => openInNewTab(profile.links.github)}>
-                  <span className="socialIcon" aria-hidden="true">
-                    <FaGithub />
-                  </span>
-                  <span>GitHub</span>
-                </button>
-              </div>
+              <a className="pill" href={`tel:${String(profile.phone).replace(/\s+/g, '')}`}>
+                <span className="pillIcon" aria-hidden="true"><FaPhoneAlt /></span>
+                <span>{profile.phone}</span>
+              </a>
+
+              <span className="pill" role="text">
+                <span className="pillIcon" aria-hidden="true"><FaMapMarkerAlt /></span>
+                <span>{profile.location}</span>
+              </span>
             </div>
 
-            <div className="aboutPhoto">
-              <div className="photo">
-                <img
-                  src="/profile.jpg"
-                  onError={(e) => {
-                    e.currentTarget.src = '/profile-placeholder.svg'
-                  }}
-                  alt="Profile"
-                />
-              </div>
+            <div className="socialRow centered">
+              <button type="button" className="socialBtn" onClick={() => openInNewTab(profile.links.linkedin)}>
+                <span className="socialIcon" aria-hidden="true"><FaLinkedin /></span>
+                <span>LinkedIn</span>
+              </button>
+
+              <button type="button" className="socialBtn" onClick={() => openInNewTab(profile.links.github)}>
+                <span className="socialIcon" aria-hidden="true"><FaGithub /></span>
+                <span>GitHub</span>
+              </button>
             </div>
           </div>
-        </Section>
 
-        <Section id="education" eyebrow="Education" title="Education">
-          <Timeline
-            items={profile.education.map((e) => ({
-              title: e.title,
-              institute: e.institute,
-              period: e.period,
-              details: e.details,
-            }))}
-          />
-        </Section>
+          <div className="aboutPhoto">
+            <div className="photo">
+              <img
+                src="/profile.jpg"
+                onError={(e) => { e.currentTarget.src = '/profile-placeholder.svg' }}
+                alt="Profile"
+              />
+            </div>
+          </div>
+        </div>
+      </Section>
 
-        <Section id="experience" eyebrow="Work" title="Experience">
+        <Section id="experience"  title="Work Experience">
           <motion.div className="xpList" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
             {profile.experience.map((x, idx) => (
               <motion.article key={idx} className="card xpCard" variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}>
                 <div className="xpHead">
-                  <div className="logoPlaceholder" aria-hidden="true" />
+                  <div className="logoPlaceholder" aria-hidden="true">
+                    {x.logo ? (
+                      <img
+                        className="companyLogo"
+                        src={x.logo}
+                        alt={`${x.company} logo`}
+                        loading="lazy"
+                      />
+                    ) : null}
+                  </div>
                   <div className="xpTitle">
                     <h3 className="h3">{x.role}</h3>
-                    <p className="muted">{x.company}</p>
+                    <p className="muted"><b>{x.company}</b></p>
                   </div>
                   {x.period ? <span className="badge badgeStrong">{x.period}</span> : null}
                 </div>
@@ -131,7 +120,18 @@ export default function App() {
           </motion.div>
         </Section>
 
-        <Section id="projects" eyebrow="Projects" title="Projects">
+        <Section id="education" title="Education">
+          <Timeline
+            items={profile.education.map((e) => ({
+              title: e.title,
+              institute: e.institute,
+              period: e.period,
+              details: e.details,
+            }))}
+          />
+        </Section>
+
+        <Section id="projects" title="Projects">
           <div className="projectWrap">
             <button className="arrowBtn left" type="button" onClick={() => scrollProjects(-1)} aria-label="Scroll projects left">
               <ChevronLeft size={20} />
@@ -156,7 +156,7 @@ export default function App() {
           </div>
         </Section>
 
-        <Section id="skills" eyebrow="Skills" title="Skills">
+        <Section id="skills" title="Skills">
           <div className="skillStack">
             <div>
               <h3 className="h3">Programming Skills</h3>
@@ -187,100 +187,66 @@ export default function App() {
           </div>
         </Section>
 
-        <Section id="extras" eyebrow="Extras" title="Extras">
-          <div className="extrasGrid">
-            <div className="card extrasCard">
-              <h3 className="h3">Extra‑curricular Activities</h3>
-              <ul className="bullets">
-                {profile.activities.map((a, i) => (
-                  <li key={i}>{a}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card extrasCard">
-              <h3 className="h3">Certifications & Achievements</h3>
-              <ul className="bullets">
-                {profile.certifications.map((c, i) => (
-                  <li key={i}>{c}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card extrasCard refs">
-              <h3 className="h3">Referees</h3>
-              <div className="refList">
-                {profile.referees.map((r, i) => (
-                  <div key={i} className="refItem">
-                    <p className="refName">{r.name}</p>
-                    <p className="muted">{r.title}</p>
-                    <p className="muted small">{r.email} • {r.phone}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Section>
-
-        <Section id="contact" eyebrow="Contact" title="Contact">
+        <Section id="contact" title="Contact">
           <div className="contactCard">
+
+            {/* Email */}
             <div className="contactItem">
               <div className="contactIcon" aria-hidden="true">
                 <FaEnvelope />
               </div>
-              <div>
-                <p className="muted small">Email</p>
-                <a className="contactLink" href={`mailto:${profile.email}`}>
-                  {profile.email}
-                </a>
-              </div>
+              <a className="contactValue" href={`mailto:${profile.email}`}>
+                {profile.email}
+              </a>
             </div>
 
+            {/* Phone */}
             <div className="contactItem">
               <div className="contactIcon" aria-hidden="true">
                 <FaPhoneAlt />
               </div>
-              <div>
-                <p className="muted small">Phone</p>
-                <a className="contactLink" href={`tel:${String(profile.phone).replace(/\s+/g, '')}`}>
-                  {profile.phone}
-                </a>
-              </div>
+              <a
+                className="contactValue"
+                href={`tel:${String(profile.phone).replace(/\s+/g, '')}`}
+              >
+                {profile.phone}
+              </a>
             </div>
 
+            {/* Location */}
             <div className="contactItem">
               <div className="contactIcon" aria-hidden="true">
                 <FaMapMarkerAlt />
               </div>
-              <div>
-                <p className="muted small">Location</p>
-                <p className="p">{profile.location}</p>
-              </div>
+              <p className="contactValue">{profile.location}</p>
             </div>
 
-            <div className="contactItem">
+            {/* LinkedIn */}
+            <div
+              className="contactItem clickable"
+              onClick={() => openInNewTab(profile.links.linkedin)}
+              role="button"
+              tabIndex={0}
+            >
               <div className="contactIcon" aria-hidden="true">
                 <FaLinkedin />
               </div>
-              <div>
-                <p className="muted small">LinkedIn</p>
-                <button className="linkBtn" type="button" onClick={() => openInNewTab(profile.links.linkedin)}>
-                  Open profile
-                </button>
-              </div>
+              <p className="contactValue">LinkedIn</p>
             </div>
 
-            <div className="contactItem">
+            {/* GitHub */}
+            <div
+              className="contactItem clickable"
+              onClick={() => openInNewTab(profile.links.github)}
+              role="button"
+              tabIndex={0}
+            >
               <div className="contactIcon" aria-hidden="true">
                 <FaGithub />
               </div>
-              <div>
-                <p className="muted small">GitHub</p>
-                <button className="linkBtn" type="button" onClick={() => openInNewTab(profile.links.github)}>
-                  Open profile
-                </button>
-              </div>
+              <p className="contactValue">GitHub</p>
             </div>
+
           </div>
         </Section>
 
